@@ -3,8 +3,18 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-  "email": "Marc@gmail.com",
+  "email": "Ronaldo@gmail.com",
   "password": "123456"
+}
+
+
+### Signin
+POST http://localhost:3000/auth/signin
+content-type: application/json
+
+{
+  "email": "Rondo@gmail.com",
+  "password": "123413231"
 }
 
 ### Find all users in the db
