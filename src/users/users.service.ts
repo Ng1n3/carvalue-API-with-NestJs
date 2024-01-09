@@ -12,6 +12,9 @@ export class UsersService {
   }
 
   findOne(id: number) {
+    if (!id) {
+      return null;
+    }
     return this.repo.findOne({ where: { id } });
   }
 
@@ -20,7 +23,7 @@ export class UsersService {
   }
 
   findAll() {
-    return this.repo.find()
+    return this.repo.find();
   }
 
   async remove(id: number) {
