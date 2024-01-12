@@ -1,8 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
-import { Response } from 'express';
+import { AppModule } from '../src/app.module';
 
 describe('Authentication System', () => {
   let app: INestApplication;
@@ -18,7 +17,7 @@ describe('Authentication System', () => {
 
   it('handles a signup request', () => {
     const email = 'newg@gmail.com'
-    return (app.getHttpServer())
+    return request(app.getHttpServer())
     .post('/auth/signup')
     .send({ email, password: 'mypassword'})
     .expect(201)
