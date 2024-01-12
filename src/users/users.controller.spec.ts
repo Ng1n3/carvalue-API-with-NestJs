@@ -21,7 +21,10 @@ describe('UsersController', () => {
       find: (email: string) => {
         return Promise.resolve([{ id: 1, email, password: 'asdf' } as User]);
       },
-      // remove: () => {},
+      remove: (id: number) => {
+        return Promise.resolve({id: 1, email: 'asdf@gmail.com', password: 'mypassword'} as User)
+      },
+
       // upadate: () => {},
     };
 
@@ -70,6 +73,11 @@ describe('UsersController', () => {
       await controller.findUser('1');
     }).rejects.toThrow();
   });
+
+  it('remove throws an error if user with given id not found', async () => {
+    const user = await controller.deleteUser('1');
+    expect(user).toBeDefined();
+  })
 
   it('Signin updates session object and return user', async () => {
     const session = {userId: -10};
